@@ -3,49 +3,34 @@ import { useNavigate } from "react-router-dom";
 
 const Choice = () => {
   const navigate = useNavigate();
+
+  const subjects = [
+    { name: "Javascript", img: "https://tse1.mm.bing.net/th/id/OIP.CVthD14qZjPjr1eLeCaeBQHaIZ?pid=Api&P=0&h=180", path: "/quiz/js" },
+    { name: "Nodejs", img: "https://tse2.mm.bing.net/th/id/OIP.xQJlilCdJ7U2ebPvc8DYLwHaIJ?pid=Api&P=0&h=180", path: "/quiz/node" },
+    { name: "HTML", img: "https://tse3.mm.bing.net/th/id/OIP.eTgg667XGd11kvh3qtoWAwHaHa?pid=Api&P=0&h=180", path: "/quiz/html" },
+    { name: "CSS", img: "https://tse2.mm.bing.net/th/id/OIP.Sexi_kReICvUQFQJ05RfrgAAAA?pid=Api&P=0&h=180", path: "/quiz/css" },
+    { name: "React", img: "https://tse1.mm.bing.net/th/id/OIP.C9w8BWXIehPGPc1dj-989wHaGq?pid=Api&P=0&h=180", path: "/quiz/react" },
+  ];
+
   return (
     <div className="mt-10 text-center px-4">
-      <h1 className="text-3xl sm:text-4xl text-center text-amber-100 font-bold">Select Your Choice</h1>
-      <div className="mt-10 mx-auto w-[500px]">
-        <div className="flex gap-10">
-          <div className="flex flex-col border-1 border-yellow-400 rounded-2xl p-2 text-amber-100" onClick={() => navigate('/quiz/js')}>
+      <h1 className="text-3xl sm:text-4xl font-bold text-amber-100">Select Your Choice</h1>
+
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+        {subjects.map((sub, index) => (
+          <div
+            key={index}
+            onClick={() => navigate(sub.path)}
+            className="flex flex-col items-center border border-yellow-400 rounded-2xl p-3 text-amber-100 cursor-pointer hover:scale-105 transition-transform duration-200 shadow-md"
+          >
             <img
-              src="https://tse1.mm.bing.net/th/id/OIP.CVthD14qZjPjr1eLeCaeBQHaIZ?pid=Api&P=0&h=180"
-              alt="" className="h-36 w-30 rounded-2xl"
+              src={sub.img}
+              alt={sub.name}
+              className="h-36 w-36 object-cover rounded-2xl"
             />
-            <div>Javascript</div>
+            <div className="mt-2 font-semibold">{sub.name}</div>
           </div>
-          <div className="flex flex-col border-1 border-yellow-400 rounded-2xl p-2 text-amber-100" onClick={() => navigate('/quiz/node')}>
-            <img
-              src="https://tse2.mm.bing.net/th/id/OIP.xQJlilCdJ7U2ebPvc8DYLwHaIJ?pid=Api&P=0&h=180"
-              alt="" className="h-36 w-30 rounded-2xl"
-            />
-            <div>Nodejs</div>
-          </div>
-          <div className="flex flex-col border-1 border-yellow-400 rounded-2xl p-2 text-amber-100" onClick={() => navigate('/quiz/html')}>
-            <img
-              src="https://tse3.mm.bing.net/th/id/OIP.eTgg667XGd11kvh3qtoWAwHaHa?pid=Api&P=0&h=180"
-              alt="" className="h-36 w-30 rounded-2xl"
-            />
-            <div>HTML</div>
-          </div>
-        </div>
-        <div className="flex mt-10 gap-10">
-          <div className="flex flex-col border-1 border-yellow-400 rounded-2xl p-2 text-amber-100" onClick={() => navigate('/quiz/css')}>
-            <img
-              src="https://tse2.mm.bing.net/th/id/OIP.Sexi_kReICvUQFQJ05RfrgAAAA?pid=Api&P=0&h=180"
-              alt="" className="h-36 w-30 rounded-2xl"
-            />
-            <div>CSS</div>
-          </div>
-          <div className="flex flex-col border-1 border-yellow-400 rounded-2xl p-2 text-amber-100" onClick={() => navigate('/quiz/react')}>
-            <img
-              src="https://tse1.mm.bing.net/th/id/OIP.C9w8BWXIehPGPc1dj-989wHaGq?pid=Api&P=0&h=180"
-              alt="" className="h-36 w-30 rounded-2xl"
-            />
-            <div>React</div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
