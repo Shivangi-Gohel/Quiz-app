@@ -17,7 +17,7 @@ const Quiz = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/quiz/${topic}`);
+      const response = await axios.get(`https://quiz-app-1a9v.onrender.com/quiz/${topic}`);
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
